@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>ru.levelup.at</groupId>
-  <artifactId>Valeriy-Kuznetsov_LevelUp</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>ru.levelup.at</groupId>
+    <artifactId>Valeriy-Kuznetsov_LevelUp</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
@@ -17,6 +17,7 @@
         <webdrivermanager.version>5.3.1</webdrivermanager.version>
         <junit-platform-engine.version>1.9.1</junit-platform-engine.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <assertj-core.version>3.23.1</assertj-core.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,13 @@
             <version>${selenium-java.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <packaging>jar</packaging>
 
@@ -61,14 +69,14 @@
         <profile>
             <id>homework2-all-tests</id>
             <properties>
-                <test.classes>homework2/*TestLuckyTicket.java</test.classes>
+                <test.classes>homework2/*TestsSuite.java</test.classes>
             </properties>
         </profile>
 
         <profile>
-            <id>homework2-positive-tests</id>
+            <id>homework2-positive-test</id>
             <properties>
-                <test.classes>homework2/PositiveTestLuckyTicket.java</test.classes>
+                <test.classes>homework2/PositiveTestSuit.java</test.classes>
             </properties>
         </profile>
 
@@ -78,60 +86,60 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <test.classes>homework2/NegativeTestLuckyTicket.java</test.classes>
+                <test.classes>homework2/NegativeTestSuite.java</test.classes>
             </properties>
         </profile>
     </profiles>
 
-  <name>Valeriy-Kuznetsov_LevelUp</name>
-  <url>http://maven.apache.org</url>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven-checkstyle-plugin.version}</version>
-        <dependencies>
-          <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
-            <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.version}</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <configLocation>
-            <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
-            https://raw.githubusercontent.com/khda91/leveup-code-checkers-configurations/main/checkstyle/checkstyle.xml
-          </configLocation>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <violationSeverity>warning</violationSeverity>
-          <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
-          <linkXRef>false</linkXRef>
-        </configuration>
-        <executions>
-          <execution>
-            <id>validate</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+    <name>Valeriy-Kuznetsov_LevelUp</name>
+    <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
+                        https://raw.githubusercontent.com/khda91/leveup-code-checkers-configurations/main/checkstyle/checkstyle.xml
+                    </configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <violationSeverity>warning</violationSeverity>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <configuration>
-                <includes>
-                    <include>${test.classes}</include>
-                </includes>
-                <skip>false</skip>
-            </configuration>
-        </plugin>
-    </plugins>
-  </build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>${test.classes}</include>
+                    </includes>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

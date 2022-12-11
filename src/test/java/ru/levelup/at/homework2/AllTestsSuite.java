@@ -8,5 +8,4 @@ import org.junit.platform.suite.api.Suite;
 @SelectPackages("ru.levelup.at.homework2")
 @IncludeTags({"Negative", "Positive"})
 public class AllTestsSuite {
-    //postive tests
 }

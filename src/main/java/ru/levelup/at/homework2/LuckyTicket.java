@@ -1,35 +1,22 @@
 package ru.levelup.at.homework2;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class LuckyTicket {
-    public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
-        System.out.print("Введите номер билета: ");
-        int number = read.nextInt();
 
-        int step = 1;
-        int count = 0;
-        int sum = 0;
-        while (number != 0) {
-            sum += step * (number % 10);
-            number /= 10;
-            if (++count == 3) {
-                step = -step;
-            }
+    public static boolean ticket(int ticketNumber) {
+        if (ticketNumber < 100000 || ticketNumber > 999999) {
+            throw new IllegalArgumentException("Некорретное значение!");
         }
-        if (count == 6 && sum == 0) {
-            System.out.println("Ticket lucky;");
-        } else if (count != 6) {
-            System.out.println("You input incorrect ticket;");
-        } else {
-            System.out.println("Ticket not lucky;");
+        ArrayList<Integer> digits = new ArrayList<>();
+
+        String temp = Integer.toString(ticketNumber);
+        for (int i = 0; i < temp.length(); i++) {
+            String oneChar = Character.toString(temp.charAt(i));
+            digits.add(Integer.parseInt(oneChar));
         }
+        int firstPart = digits.get(0) + digits.get(1) + digits.get(2);
+        int lastPart = digits.get(3) + digits.get(4) + digits.get(5);
+        return  firstPart == lastPart;
     }
-
-    public static int validateInputTicketNumber(int num) {
-        return 0;
-    }
-
 }
-
