@@ -1,8 +1,8 @@
 package ru.levelup.at.homework7.steps;
 
 import org.openqa.selenium.WebDriver;
-import ru.levelup.at.homework5.LoginRegistrationPage;
-import ru.levelup.at.homework5.MainPage;
+import ru.levelup.at.homework7.LoginRegistrationPage;
+import ru.levelup.at.homework7.MainPage;
 
 public class BaseStep  {
 

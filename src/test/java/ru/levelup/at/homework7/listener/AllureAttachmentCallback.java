@@ -19,8 +19,8 @@ public class AllureAttachmentCallback implements AfterTestExecutionCallback {
     }
 
     @Attachment(type = "image/png", fileExtension = ".png")
-    private byte[] attachScreenshot(final WebDriver driver) {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    private void attachScreenshot(final WebDriver driver) {
+        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     private void attachPageSource(final WebDriver driver) {

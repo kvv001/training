@@ -1,9 +1,10 @@
 package ru.levelup.at.homework3;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.google.common.base.Verify;
 import java.time.Duration;
 import java.util.List;
-import com.google.common.base.Verify;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

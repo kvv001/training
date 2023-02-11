@@ -4,8 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.levelup.at.homework5.steps.ActionStep;
-import ru.levelup.at.homework5.steps.AssertionStep;
+import ru.levelup.at.homework7.context.TestContext;
+import ru.levelup.at.homework7.steps.ActionStep;
+import ru.levelup.at.homework7.steps.AssertionStep;
 
 public abstract class BaseTest {
 
@@ -21,10 +22,14 @@ public abstract class BaseTest {
     void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        actionStep = new ActionStep(driver);
+        assertionStep = new AssertionStep(driver);
+        TestContext.getInstance().putObject("driver", driver);
     }
 
     @AfterEach
     void tearDown() {
         driver.quit();
+        TestContext.clear();
     }
 }

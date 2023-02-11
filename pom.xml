@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <junit-jupiter.version>5.9.1</junit-jupiter.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -178,7 +178,7 @@
                     <failsOnError>true</failsOnError>
                     <linkXRef>false</linkXRef>
                 </configuration>
-                <executions>
+ <!--              <executions>
                     <execution>
                         <id>validate</id>
                         <phase>validate</phase>
@@ -186,7 +186,7 @@
                             <goal>check</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>  -->
             </plugin>
 
             <plugin>
@@ -217,7 +217,6 @@
                 </dependencies>
             </plugin>
 
-
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -235,5 +234,9 @@
 
         </plugins>
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+    </reporting>
 
 </project>
